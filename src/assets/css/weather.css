@@ -1,0 +1,11 @@
+.weather-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.weather-img {
+    height: 100px;
+    margin: 1rem;
+}
