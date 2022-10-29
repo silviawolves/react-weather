@@ -1,0 +1,16 @@
+.input-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.ant-input-group {
+    border-bottom: 1px solid lightgray;
+}
+
+.ant-input-group input {
+    text-transform: capitalize;
+}
+
+.ant-input-group-addon button {
+    border: none;
+}
