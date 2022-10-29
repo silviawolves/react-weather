@@ -1,0 +1,15 @@
+.dl-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+h1 {
+    padding: 0;
+    margin: 0;
+}
+
+.date-time {
+    font-weight: lighter;
+}
