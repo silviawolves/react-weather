@@ -1,9 +1,9 @@
 import '../assets/css/weather.css';
 
-function Weather() {
+function Weather(props) {
     return (
         <div className="weather-wrapper">
-            <p>Rainy</p>
+            <p>{props.description}</p>
             <div>
                 <img
                     src="https://cdn-icons-png.flaticon.com/512/116/116251.png"
