@@ -24,12 +24,12 @@ function App() {
                 console.log(err.message);
             });
     }, []);
-
+    console.log(result);
     return (
         <div className="App">
             <SearchBar />
             <DateLocation name={result.name} />
-            <Weather description={result.weather.main} />
+            <Weather description={result.name} />
             <Forecast />
         </div>
     );
