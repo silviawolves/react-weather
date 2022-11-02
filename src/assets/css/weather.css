@@ -2,7 +2,18 @@
     padding: 0.5rem 0 2rem 0;
 }
 
+.wrap-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .weather-img {
-    height: 100px;
+    height: 50px;
     display: block;
+}
+
+.temperature {
+    font-size: 80px;
+    margin: 0;
 }
