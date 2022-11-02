@@ -60,7 +60,6 @@ function App() {
                         onSearch={onSearch}
                         style={{
                             width: 200,
-                            textTransform: 'capitalize',
                         }}
                     />
                 </div>

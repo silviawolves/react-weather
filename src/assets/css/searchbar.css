@@ -9,6 +9,7 @@
 
 .ant-input-group input {
     text-transform: capitalize;
+    color: white;
 }
 
 .ant-input-group-addon button {

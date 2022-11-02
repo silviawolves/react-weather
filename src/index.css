@@ -19,13 +19,14 @@
 body {
     font-family: 'Raleway', sans-serif;
     margin: 0;
+    color: lightgray;
     display: flex;
     place-items: center;
     min-width: 320px;
     min-height: 100vh;
     background: linear-gradient(
-        354deg,
-        rgba(236, 229, 216, 1) 0%,
-        rgba(203, 210, 222, 1) 100%
+        137deg,
+        rgba(51, 69, 55, 1) 0%,
+        rgba(22, 20, 19, 1) 100%
     );
 }

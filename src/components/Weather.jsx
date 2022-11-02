@@ -32,17 +32,9 @@ function Weather(props) {
                     </div>
                 </Col>
 
-                {/* <Col span={6}>
-                    <img
-                        src={`http://openweathermap.org/img/wn/${props.data.weather[0].icon}.png`}
-                        alt={props.data.weather[0].description}
-                        className="weather-img"
-                    />
-                </Col> */}
-
                 <Col span={4}>
                     <p>{Math.round(props.data.main.temp_min)}° C</p>
-                    <Divider />
+                    <Divider style={{borderColor: 'white'}} />
                     <p>{Math.round(props.data.main.temp_max)}° C</p>
                 </Col>
             </Row>

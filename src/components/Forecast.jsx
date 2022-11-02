@@ -39,7 +39,10 @@ function Forecast(props) {
     } else {
         return (
             <div>
-                <Divider orientation="left" className="forecast-title">
+                <Divider
+                    orientation="left"
+                    className="forecast-title"
+                    style={{borderColor: 'white'}}>
                     Daily Forecast
                 </Divider>
 
@@ -48,7 +51,9 @@ function Forecast(props) {
                         <Col key={i}>
                             <div className="forecast-wrapper">
                                 <div>
-                                    <h4>{forecastDays[i]}</h4>
+                                    <h4 style={{color: 'white', margin: 0}}>
+                                        {forecastDays[i]}
+                                    </h4>
                                     <img
                                         src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
                                         alt=""
