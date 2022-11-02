@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react';
 import {API_KEY} from '../components/api';
 import '../assets/css/forecast.css';
 
-const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
 function Forecast(props) {
     const [error, setError] = useState(null);
@@ -22,7 +22,6 @@ function Forecast(props) {
             .then(
                 (data) => {
                     setIsLoaded(true);
-                    console.log(data);
                     setForecast(data);
                 },
                 (error) => {
@@ -43,10 +42,10 @@ function Forecast(props) {
 
                 <Row align="middle" justify="space-between">
                     {forecast.list.splice(0, 5).map((day, i) => (
-                        <Col>
+                        <Col key={i}>
                             <div className="forecast-wrapper">
                                 <div>
-                                    <h4 key={i}>{forecastDays[i]}</h4>
+                                    <h4>{forecastDays[i]}</h4>
                                     <img
                                         src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
                                         alt=""
