@@ -1,22 +1,27 @@
+import {Row, Col} from 'antd';
 import '../assets/css/weather.css';
 
 function Weather(props) {
     return (
-        <div className="weather-wrapper">
-            <p style={{textTransform: 'capitalize'}}>
-                {props.data.weather[0].description}
-            </p>
+        <Row align="middle" justify="center" style={{textAlign: 'center'}}>
+            <Col span={6}>
+                <p style={{textTransform: 'capitalize'}}>
+                    {props.data.weather[0].description}
+                </p>
+            </Col>
 
-            <div>
+            <Col span={6}>
                 <img
                     src={`http://openweathermap.org/img/wn/${props.data.weather[0].icon}.png`}
                     alt={props.data.weather[0].description}
                     className="weather-img"
                 />
-            </div>
+            </Col>
 
-            <p>{Math.round(props.data.main.temp)}° C</p>
-        </div>
+            <Col span={6}>
+                <p>{Math.round(props.data.main.temp)}° C</p>
+            </Col>
+        </Row>
     );
 }
 
