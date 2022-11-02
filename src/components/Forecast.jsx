@@ -30,7 +30,7 @@ function Forecast(props) {
                     setError(error);
                 },
             );
-    }, []);
+    }, [props]);
 
     if (error) {
         return <div>Error: {error.message}</div>;
