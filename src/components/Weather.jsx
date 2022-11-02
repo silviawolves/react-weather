@@ -20,7 +20,7 @@ function Weather(props) {
                             style={{
                                 textTransform: 'capitalize',
                                 margin: 0,
-                                fontSize: '1.8rem',
+                                fontSize: '1.5rem',
                             }}>
                             {props.data.weather[0].description}
                         </p>
