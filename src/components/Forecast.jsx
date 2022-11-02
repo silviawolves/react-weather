@@ -3,7 +3,29 @@ import {useState, useEffect} from 'react';
 import {API_KEY} from '../components/api';
 import '../assets/css/forecast.css';
 
-function Forecast() {
+function Forecast(props) {
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [forecast, setForecast] = useState({});
+
+    useEffect(() => {
+        fetch(
+            `https://api.openweathermap.org/data/2.5/forecast?lat=${props.data.coord.lat}&lon=${props.data.coord.lon}&appid=${API_KEY}&units=metric`,
+        )
+            .then((response) => response.json())
+            .then(
+                (data) => {
+                    setIsLoaded(true);
+                    console.log(data);
+                    setForecast(data);
+                },
+                (error) => {
+                    setIsLoaded(true);
+                    setError(error);
+                },
+            );
+    }, []);
+
     return (
         <div>
             <Divider orientation="left">Daily Forecast</Divider>
@@ -22,7 +44,7 @@ function Forecast() {
                         <p>13°</p>
                     </div>
                 </Col>
-                <Col>
+                {/* <Col>
                     <div className="forecast-wrapper">
                         <h4>Mon</h4>
                         <div>
@@ -73,7 +95,7 @@ function Forecast() {
                         </div>
                         <p>13°</p>
                     </div>
-                </Col>
+                </Col> */}
             </Row>
         </div>
     );

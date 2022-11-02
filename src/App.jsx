@@ -11,7 +11,6 @@ function App() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [result, setResult] = useState({});
-
     const [city, setCity] = useState('Milano');
 
     useEffect(() => {
@@ -31,19 +30,6 @@ function App() {
             );
     }, []);
 
-    // useEffect(() => {
-    //     fetch(
-    //         `https://api.openweathermap.org/data/2.5/forecast?lat=${
-    //             result.coord && result.coord.lat
-    //         }&lon=${result.coord && result.coord.lon}&appid=${API_KEY}`,
-    //     )
-    //         .then((response) => response.json())
-    //         .then((data) => {
-    //             console.log(data);
-    //             setResult(data);
-    //         });
-    // }, []);
-
     if (error) {
         return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
@@ -53,13 +39,15 @@ function App() {
             <div className="App">
                 <SearchBar />
                 <DateLocation name={result.name} />
+
                 <Weather
-                    weather={result.weather[0].description.toUpperCase()}
+                    weather={result.weather[0].description}
                     image={`http://openweathermap.org/img/wn/${result.weather[0].icon}.png`}
                     alt={result.weather[0].description}
                     temperature={Math.round(result.main.temp)}
                 />
-                <Forecast />
+
+                <Forecast data={result} />
             </div>
         );
     }
