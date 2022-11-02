@@ -42,7 +42,7 @@ function Forecast(props) {
                 <Divider
                     orientation="left"
                     className="forecast-title"
-                    style={{borderColor: 'white'}}>
+                    style={{borderColor: 'rgba(255, 255, 255, 0.5)'}}>
                     Daily Forecast
                 </Divider>
 

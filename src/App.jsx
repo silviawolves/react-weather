@@ -58,9 +58,7 @@ function App() {
                         bordered={false}
                         placeholder="Search city..."
                         onSearch={onSearch}
-                        style={{
-                            width: 200,
-                        }}
+                        style={{width: 200}}
                     />
                 </div>
 

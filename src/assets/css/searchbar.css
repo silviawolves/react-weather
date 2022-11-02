@@ -5,11 +5,21 @@
 
 .ant-input-group {
     border-bottom: 1px solid lightgray;
+    background-color: rgba(0, 0, 0, 0) !important;
 }
 
 .ant-input-group input {
     text-transform: capitalize;
     color: white;
+}
+
+.ant-input-search > .ant-input-group > .ant-input-group-addon:last-child {
+    background-color: transparent !important;
+}
+
+button {
+    background-color: transparent !important;
+    color: white !important;
 }
 
 .ant-input-group-addon button {
