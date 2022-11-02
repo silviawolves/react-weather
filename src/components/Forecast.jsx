@@ -9,6 +9,7 @@ function Forecast(props) {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [forecast, setForecast] = useState({});
+
     const dayInWeek = new Date().getDay();
     const forecastDays = weekDays
         .slice(dayInWeek, weekDays.length)

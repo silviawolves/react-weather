@@ -1,17 +1,23 @@
 import 'antd/dist/antd.css';
 import './App.css';
+import './assets/css/searchbar.css';
 import {useState, useEffect} from 'react';
+import {Input} from 'antd';
 import {API_KEY} from './components/api';
-import SearchBar from './components/SearchBar';
 import DateLocation from './components/DateLocation';
 import Weather from './components/Weather';
 import Forecast from './components/Forecast';
 
+const {Search} = Input;
+
 function App() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
+    const [city, setCity] = useState('Roma');
     const [result, setResult] = useState({});
-    const [city, setCity] = useState('Milano');
+    const onSearch = (value) => {
+        setCity(value);
+    };
 
     useEffect(() => {
         fetch(
@@ -28,7 +34,7 @@ function App() {
                     setError(error);
                 },
             );
-    }, []);
+    }, [city]);
 
     if (error) {
         return <div>Error: {error.message}</div>;
@@ -37,15 +43,21 @@ function App() {
     } else {
         return (
             <div className="App">
-                <SearchBar />
+                <div className="input-wrapper">
+                    <Search
+                        bordered={false}
+                        placeholder="Search city..."
+                        onSearch={onSearch}
+                        style={{
+                            width: 200,
+                            textTransform: 'capitalize',
+                        }}
+                    />
+                </div>
+
                 <DateLocation name={result.name} />
 
-                <Weather
-                    weather={result.weather[0].description}
-                    image={`http://openweathermap.org/img/wn/${result.weather[0].icon}.png`}
-                    alt={result.weather[0].description}
-                    temperature={Math.round(result.main.temp)}
-                />
+                <Weather data={result} />
 
                 <Forecast data={result} />
             </div>

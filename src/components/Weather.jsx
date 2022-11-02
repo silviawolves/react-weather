@@ -3,15 +3,19 @@ import '../assets/css/weather.css';
 function Weather(props) {
     return (
         <div className="weather-wrapper">
-            <p style={{textTransform: 'capitalize'}}>{props.weather}</p>
+            <p style={{textTransform: 'capitalize'}}>
+                {props.data.weather[0].description}
+            </p>
+
             <div>
                 <img
-                    src={props.image}
-                    alt={props.alt}
+                    src={`http://openweathermap.org/img/wn/${props.data.weather[0].icon}.png`}
+                    alt={props.data.weather[0].description}
                     className="weather-img"
                 />
             </div>
-            <p>{props.temperature}° C</p>
+
+            <p>{Math.round(props.data.main.temp)}° C</p>
         </div>
     );
 }
