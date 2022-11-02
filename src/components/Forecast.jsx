@@ -39,7 +39,9 @@ function Forecast(props) {
     } else {
         return (
             <div>
-                <Divider orientation="left">Daily Forecast</Divider>
+                <Divider orientation="left" className="forecast-title">
+                    Daily Forecast
+                </Divider>
 
                 <Row align="middle" justify="space-between">
                     {forecast.list.splice(0, 5).map((day, i) => (

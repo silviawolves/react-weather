@@ -1,4 +1,3 @@
-import Item from 'antd/lib/list/Item';
 import '../assets/css/datelocation.css';
 
 function DateLocation(props) {

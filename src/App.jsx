@@ -3,6 +3,7 @@ import './App.css';
 import './assets/css/searchbar.css';
 import {useState, useEffect} from 'react';
 import {Input} from 'antd';
+import {LoadingOutlined} from '@ant-design/icons';
 import {API_KEY} from './components/api';
 import DateLocation from './components/DateLocation';
 import Weather from './components/Weather';
@@ -39,7 +40,16 @@ function App() {
     if (error) {
         return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-        return <div>Loading...</div>;
+        return (
+            <div
+                style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}>
+                <LoadingOutlined />
+            </div>
+        );
     } else {
         return (
             <div className="App">
@@ -56,9 +66,7 @@ function App() {
                 </div>
 
                 <DateLocation name={result.name} />
-
                 <Weather data={result} />
-
                 <Forecast data={result} />
             </div>
         );
