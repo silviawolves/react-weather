@@ -3,10 +3,16 @@ import {useState, useEffect} from 'react';
 import {API_KEY} from '../components/api';
 import '../assets/css/forecast.css';
 
+const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+
 function Forecast(props) {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [forecast, setForecast] = useState({});
+    const dayInWeek = new Date().getDay();
+    const forecastDays = weekDays
+        .slice(dayInWeek, weekDays.length)
+        .concat(weekDays.slice(0, dayInWeek));
 
     useEffect(() => {
         fetch(
@@ -26,79 +32,35 @@ function Forecast(props) {
             );
     }, []);
 
-    return (
-        <div>
-            <Divider orientation="left">Daily Forecast</Divider>
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+        return <div>Loading...</div>;
+    } else {
+        return (
+            <div>
+                <Divider orientation="left">Daily Forecast</Divider>
 
-            <Row align="middle" justify="space-between">
-                <Col>
-                    <div className="forecast-wrapper">
-                        <h4>Mon</h4>
-                        <div>
-                            <img
-                                src="https://cdn-icons-png.flaticon.com/512/116/116251.png"
-                                alt=""
-                                style={{height: '30px'}}
-                            />
-                        </div>
-                        <p>13°</p>
-                    </div>
-                </Col>
-                {/* <Col>
-                    <div className="forecast-wrapper">
-                        <h4>Mon</h4>
-                        <div>
-                            <img
-                                src="https://cdn-icons-png.flaticon.com/512/116/116251.png"
-                                alt=""
-                                style={{height: '30px'}}
-                            />
-                        </div>
-                        <p>13°</p>
-                    </div>
-                </Col>
-                <Col>
-                    <div className="forecast-wrapper">
-                        <h4>Mon</h4>
-                        <div>
-                            <img
-                                src="https://cdn-icons-png.flaticon.com/512/116/116251.png"
-                                alt=""
-                                style={{height: '30px'}}
-                            />
-                        </div>
-                        <p>13°</p>
-                    </div>
-                </Col>
-                <Col>
-                    <div className="forecast-wrapper">
-                        <h4>Mon</h4>
-                        <div>
-                            <img
-                                src="https://cdn-icons-png.flaticon.com/512/116/116251.png"
-                                alt=""
-                                style={{height: '30px'}}
-                            />
-                        </div>
-                        <p>13°</p>
-                    </div>
-                </Col>
-                <Col>
-                    <div className="forecast-wrapper">
-                        <h4>Mon</h4>
-                        <div>
-                            <img
-                                src="https://cdn-icons-png.flaticon.com/512/116/116251.png"
-                                alt=""
-                                style={{height: '30px'}}
-                            />
-                        </div>
-                        <p>13°</p>
-                    </div>
-                </Col> */}
-            </Row>
-        </div>
-    );
+                <Row align="middle" justify="space-between">
+                    {forecast.list.splice(0, 5).map((day, i) => (
+                        <Col>
+                            <div className="forecast-wrapper">
+                                <div>
+                                    <h4 key={i}>{forecastDays[i]}</h4>
+                                    <img
+                                        src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
+                                        alt=""
+                                        style={{height: '30px'}}
+                                    />
+                                    <p>{Math.round(day.main.temp)}° C</p>
+                                </div>
+                            </div>
+                        </Col>
+                    ))}
+                </Row>
+            </div>
+        );
+    }
 }
 
 export default Forecast;
