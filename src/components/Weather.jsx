@@ -3,15 +3,15 @@ import '../assets/css/weather.css';
 function Weather(props) {
     return (
         <div className="weather-wrapper">
-            <p>{props.description}</p>
+            <p>{props.weather}</p>
             <div>
                 <img
-                    src="https://cdn-icons-png.flaticon.com/512/116/116251.png"
-                    alt=""
+                    src={props.image}
+                    alt={props.alt}
                     className="weather-img"
                 />
             </div>
-            <p>22°</p>
+            <p>{props.temperature}° C</p>
         </div>
     );
 }

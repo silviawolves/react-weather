@@ -1,4 +1,6 @@
 import {Divider, Row, Col} from 'antd';
+import {useState, useEffect} from 'react';
+import {API_KEY} from '../components/api';
 import '../assets/css/forecast.css';
 
 function Forecast() {
