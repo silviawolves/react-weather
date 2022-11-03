@@ -18,6 +18,7 @@ function App() {
     const [result, setResult] = useState({});
     const onSearch = (value) => {
         setCity(value);
+        if (city !== '') setCity('Roma');
     };
 
     useEffect(() => {
@@ -62,7 +63,11 @@ function App() {
                     />
                 </div>
 
-                <DateLocation name={result.name} />
+                <DateLocation
+                    name={result.name}
+                    country={result.sys.country.toUpperCase()}
+                />
+
                 <Weather data={result} />
                 <Forecast data={result} />
             </div>
