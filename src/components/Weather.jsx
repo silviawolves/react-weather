@@ -32,12 +32,16 @@ function Weather(props) {
                     </div>
                 </Col>
 
-                <Col span={4}>
-                    <p>{Math.round(props.data.main.temp_min)}° C</p>
+                <Col span={4} xs={6}>
+                    <p className="low-max-temp">
+                        {Math.round(props.data.main.temp_min)}° C
+                    </p>
                     <Divider
                         style={{borderColor: 'rgba(255, 255, 255, 0.5)'}}
                     />
-                    <p>{Math.round(props.data.main.temp_max)}° C</p>
+                    <p className="low-max-temp">
+                        {Math.round(props.data.main.temp_max)}° C
+                    </p>
                 </Col>
             </Row>
         </div>

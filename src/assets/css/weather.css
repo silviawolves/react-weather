@@ -10,10 +10,37 @@
 
 .weather-img {
     height: 50px;
-    display: block;
 }
 
 .temperature {
     font-size: 75px;
     margin: 0;
+}
+
+.low-max-temp {
+    font-size: 1rem;
+}
+
+@media screen and (max-width: 576px) {
+    .temperature {
+        font-size: 50px;
+    }
+}
+
+@media screen and (max-width: 411px) {
+    .weather-wrapper {
+        padding: 0.5rem 0;
+    }
+
+    .ant-row {
+        justify-content: space-evenly;
+    }
+
+    .temperature {
+        font-size: 40px;
+    }
+
+    .low-max-temp {
+        font-size: 0.8rem;
+    }
 }

@@ -3,7 +3,7 @@ import './App.css';
 import './assets/css/searchbar.css';
 
 import {useState, useEffect} from 'react';
-import {Input} from 'antd';
+import {Input, Layout} from 'antd';
 import {LoadingOutlined} from '@ant-design/icons';
 import {API_KEY} from './components/api';
 
@@ -12,6 +12,7 @@ import DateLocation from './components/DateLocation';
 import Weather from './components/Weather';
 import Forecast from './components/Forecast';
 
+const {Content} = Layout;
 const {Search} = Input;
 
 function App() {
@@ -64,23 +65,25 @@ function App() {
     } else {
         return (
             <div className="App">
-                <div className="input-wrapper">
-                    <Search
-                        bordered={false}
-                        placeholder="Search city..."
-                        onSearch={onSearch}
-                        style={{width: 200}}
+                <Content>
+                    <div className="input-wrapper">
+                        <Search
+                            bordered={false}
+                            placeholder="Search city..."
+                            onSearch={onSearch}
+                            style={{width: 200}}
+                        />
+                    </div>
+
+                    <DateLocation
+                        name={result.name}
+                        country={result.sys.country.toUpperCase()}
+                        date={dayjs().format('dddd')}
                     />
-                </div>
 
-                <DateLocation
-                    name={result.name}
-                    country={result.sys.country.toUpperCase()}
-                    date={dayjs().format('dddd')}
-                />
-
-                <Weather data={result} />
-                <Forecast data={result} />
+                    <Weather data={result} />
+                    <Forecast data={result} />
+                </Content>
             </div>
         );
     }
