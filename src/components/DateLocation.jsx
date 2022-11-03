@@ -6,7 +6,8 @@ function DateLocation(props) {
             <h1 style={{textTransform: 'capitalize'}}>
                 {props.name}, {props.country}
             </h1>
-            <p className="date-time">Today</p>
+
+            <p className="date-time">{props.date}</p>
         </div>
     );
 }

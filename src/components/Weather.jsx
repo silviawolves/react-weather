@@ -22,7 +22,7 @@ function Weather(props) {
                                 margin: 0,
                                 fontSize: '1.5rem',
                             }}>
-                            {props.data.weather[0].description}
+                            {props.data.weather[0].main}
                         </p>
                     </div>
                     <div>
@@ -34,7 +34,9 @@ function Weather(props) {
 
                 <Col span={4}>
                     <p>{Math.round(props.data.main.temp_min)}° C</p>
-                    <Divider style={{borderColor: 'white'}} />
+                    <Divider
+                        style={{borderColor: 'rgba(255, 255, 255, 0.5)'}}
+                    />
                     <p>{Math.round(props.data.main.temp_max)}° C</p>
                 </Col>
             </Row>

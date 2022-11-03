@@ -1,10 +1,13 @@
 import 'antd/dist/antd.css';
 import './App.css';
 import './assets/css/searchbar.css';
+
 import {useState, useEffect} from 'react';
 import {Input} from 'antd';
 import {LoadingOutlined} from '@ant-design/icons';
 import {API_KEY} from './components/api';
+
+import dayjs from 'dayjs';
 import DateLocation from './components/DateLocation';
 import Weather from './components/Weather';
 import Forecast from './components/Forecast';
@@ -14,33 +17,40 @@ const {Search} = Input;
 function App() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
-    const [city, setCity] = useState('Roma');
+    const [city, setCity] = useState('Venezia');
     const [result, setResult] = useState({});
+
     const onSearch = (value) => {
         setCity(value);
-        if (city !== '') setCity('Roma');
+        if (value === '') {
+            setCity(city);
+        }
     };
 
     useEffect(() => {
+        const handleError = (response) => {
+            if (!response.ok) {
+                throw setCity('');
+            } else {
+                return response.json();
+            }
+        };
+
         fetch(
             `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`,
         )
-            .then((response) => response.json())
-            .then(
-                (data) => {
-                    setIsLoaded(true);
-                    setResult(data);
-                },
-                (error) => {
-                    setIsLoaded(true);
-                    setError(error);
-                },
-            );
+            .then(handleError)
+            .then((data) => {
+                setIsLoaded(true);
+                setResult(data);
+            })
+            .catch((error) => {
+                setError(error);
+                setIsLoaded(true);
+            });
     }, [city]);
 
-    if (error) {
-        return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
+    if (!isLoaded) {
         return (
             <div
                 style={{
@@ -66,6 +76,7 @@ function App() {
                 <DateLocation
                     name={result.name}
                     country={result.sys.country.toUpperCase()}
+                    date={dayjs().format('dddd')}
                 />
 
                 <Weather data={result} />
