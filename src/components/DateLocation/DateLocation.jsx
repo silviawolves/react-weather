@@ -1,4 +1,4 @@
-import '../assets/css/datelocation.css';
+import './datelocation.css';
 
 function DateLocation(props) {
     return (

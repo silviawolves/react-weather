@@ -1,5 +1,5 @@
 import {Row, Col, Divider} from 'antd';
-import '../assets/css/weather.css';
+import './weather.css';
 
 function Weather(props) {
     return (

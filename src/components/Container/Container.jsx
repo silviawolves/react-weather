@@ -1,21 +1,21 @@
 import 'antd/dist/antd.css';
-import './App.css';
-import './assets/css/searchbar.css';
+import './container.css';
+import '../../css/searchbar.css';
 
 import {useState, useEffect} from 'react';
 import {Input, Layout} from 'antd';
 import {LoadingOutlined} from '@ant-design/icons';
-import {API_KEY} from './components/api';
+import {API_KEY} from '../../api';
 
 import dayjs from 'dayjs';
-import DateLocation from './components/DateLocation';
-import Weather from './components/Weather';
-import Forecast from './components/Forecast';
+import DateLocation from '../DateLocation';
+import Weather from '../Weather';
+import Forecast from '../Forecast';
 
 const {Content} = Layout;
 const {Search} = Input;
 
-function App() {
+function Container() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [city, setCity] = useState('Venezia');
@@ -89,4 +89,4 @@ function App() {
     }
 }
 
-export default App;
+export default Container;

@@ -1,7 +1,7 @@
 import {Divider, Row, Col} from 'antd';
 import {useState, useEffect} from 'react';
-import {API_KEY} from '../components/api';
-import '../assets/css/forecast.css';
+import {API_KEY} from '../../api';
+import './forecast.css';
 
 const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
