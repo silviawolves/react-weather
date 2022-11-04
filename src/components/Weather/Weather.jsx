@@ -1,14 +1,11 @@
 import {Row, Col, Divider} from 'antd';
+import {ArrowUpOutlined, ArrowDownOutlined} from '@ant-design/icons';
 import './weather.css';
 
 function Weather(props) {
     return (
         <div className="weather-wrapper">
-            <Row
-                align="middle"
-                justify="center"
-                gutter={20}
-                style={{textAlign: 'center'}}>
+            <Row gutter={20} style={{textAlign: 'center'}}>
                 <Col span={12}>
                     <div className="wrap-col">
                         <img
@@ -32,15 +29,18 @@ function Weather(props) {
                     </div>
                 </Col>
 
-                <Col span={4} xs={6}>
+                <Col md={6} xs={8}>
                     <p className="low-max-temp">
-                        {Math.round(props.data.main.temp_min)}° C
+                        <ArrowUpOutlined />{' '}
+                        {Math.round(props.data.main.temp_max)}° C
                     </p>
                     <Divider
+                        sm={{display: 'none'}}
                         style={{borderColor: 'rgba(255, 255, 255, 0.5)'}}
                     />
                     <p className="low-max-temp">
-                        {Math.round(props.data.main.temp_max)}° C
+                        <ArrowDownOutlined />{' '}
+                        {Math.round(props.data.main.temp_min)}° C
                     </p>
                 </Col>
             </Row>

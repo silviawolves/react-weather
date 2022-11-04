@@ -18,16 +18,8 @@ h1 {
     font-weight: lighter;
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 411px) {
     .dl-wrapper {
         padding: 0.5rem;
-    }
-
-    .date-time {
-        display: none;
-    }
-
-    h1 {
-        font-size: 2rem;
     }
 }

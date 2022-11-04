@@ -25,3 +25,6 @@ button {
 .ant-input-group-addon button {
     border: none;
 }
+
+@media screen and (max-width: 411px) {
+}

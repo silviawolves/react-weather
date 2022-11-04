@@ -6,7 +6,6 @@ import {useState, useEffect} from 'react';
 import {Input, Layout, Form} from 'antd';
 import {LoadingOutlined} from '@ant-design/icons';
 import {API_KEY} from '../../api';
-import {useForm} from 'react-hook-form';
 
 import dayjs from 'dayjs';
 import DateLocation from '../DateLocation';
@@ -32,7 +31,6 @@ function Container() {
     };
 
     const onSubmit = ({search}) => {
-        console.log(search);
         form.resetFields();
     };
 
@@ -75,16 +73,23 @@ function Container() {
             <div
                 className="App"
                 style={{
-                    padding: '2rem',
-                    borderRadius: '20px',
                     backgroundPosition: 'center',
                     backgroundSize: 'cover',
                     backgroundImage:
-                        result.weather[0].id >= 801 &&
-                        result.weather[0].id <= 804
+                        result.weather[0].id >= 200 &&
+                        result.weather[0].id <= 232
+                            ? 'url(./public/img/storm.jpg)'
+                            : result.weather[0].id >= 500 &&
+                              result.weather[0].id <= 531
+                            ? 'url(./public/img/rain.jpg)'
+                            : result.weather[0].id >= 600 &&
+                              result.weather[0].id <= 622
+                            ? 'url(./public/img/snow.jpg)'
+                            : result.weather[0].id >= 801 &&
+                              result.weather[0].id <= 804
                             ? 'url(./public/img/cloudy.jpg)'
                             : result.weather[0].id === 800
-                            ? 'url(./public/img/clear_sky.webp)'
+                            ? 'url(./public/img/clear.jpg)'
                             : '',
                 }}>
                 <Content>

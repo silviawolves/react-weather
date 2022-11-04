@@ -50,17 +50,15 @@ function Forecast(props) {
                     {forecast.list.splice(0, 5).map((day, i) => (
                         <Col key={i}>
                             <div className="daily-wrapper">
-                                <div>
-                                    <h4 style={{color: 'white', margin: 0}}>
-                                        {forecastDays[i]}
-                                    </h4>
-                                    <img
-                                        src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
-                                        alt=""
-                                        style={{height: '30px'}}
-                                    />
-                                    <p>{Math.round(day.main.temp)}° C</p>
-                                </div>
+                                <h4 style={{color: 'white', margin: 0}}>
+                                    {forecastDays[i]}
+                                </h4>
+                                <img
+                                    src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
+                                    alt=""
+                                    style={{height: '30px'}}
+                                />
+                                <p>{Math.round(day.main.temp)}° C</p>
                             </div>
                         </Col>
                     ))}
