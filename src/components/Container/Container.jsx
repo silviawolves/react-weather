@@ -69,7 +69,7 @@ function Container() {
                     <div className="input-wrapper">
                         <Search
                             bordered={false}
-                            placeholder="Search city..."
+                            placeholder="Search city"
                             onSearch={onSearch}
                             style={{width: 200}}
                         />
