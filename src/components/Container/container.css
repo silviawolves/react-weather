@@ -1,12 +1,17 @@
 #root {
+    margin: 0 auto;
+}
+
+.App {
+    text-align: center;
+    min-height: 600px;
+    width: 450px;
+    border-radius: 20px;
     background-color: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(3px);
-    min-height: 600px;
-    min-width: 450px;
-    border-radius: 20px;
-    margin: 0 auto;
-    padding: 2rem;
+    height: 100%;
     box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+    position: relative;
 }
 
 @media screen and (max-width: 576px) {

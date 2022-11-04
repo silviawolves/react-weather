@@ -38,7 +38,7 @@ function Forecast(props) {
         return <div>Loading...</div>;
     } else {
         return (
-            <div>
+            <div className="forecast">
                 <Divider
                     orientation="left"
                     className="forecast-title"
@@ -49,7 +49,7 @@ function Forecast(props) {
                 <Row align="middle" justify="space-between">
                     {forecast.list.splice(0, 5).map((day, i) => (
                         <Col key={i}>
-                            <div className="forecast-wrapper">
+                            <div className="daily-wrapper">
                                 <div>
                                     <h4 style={{color: 'white', margin: 0}}>
                                         {forecastDays[i]}

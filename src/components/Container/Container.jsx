@@ -3,9 +3,10 @@ import './container.css';
 import '../../css/searchbar.css';
 
 import {useState, useEffect} from 'react';
-import {Input, Layout} from 'antd';
+import {Input, Layout, Form} from 'antd';
 import {LoadingOutlined} from '@ant-design/icons';
 import {API_KEY} from '../../api';
+import {useForm} from 'react-hook-form';
 
 import dayjs from 'dayjs';
 import DateLocation from '../DateLocation';
@@ -21,11 +22,18 @@ function Container() {
     const [city, setCity] = useState('Venezia');
     const [result, setResult] = useState({});
 
+    const [form] = Form.useForm();
+
     const onSearch = (value) => {
         setCity(value);
         if (value === '') {
             setCity(city);
         }
+    };
+
+    const onSubmit = ({search}) => {
+        console.log(search);
+        form.resetFields();
     };
 
     useEffect(() => {
@@ -64,16 +72,36 @@ function Container() {
         );
     } else {
         return (
-            <div className="App">
+            <div
+                className="App"
+                style={{
+                    padding: '2rem',
+                    borderRadius: '20px',
+                    backgroundPosition: 'center',
+                    backgroundSize: 'cover',
+                    backgroundImage:
+                        result.weather[0].id >= 801 &&
+                        result.weather[0].id <= 804
+                            ? 'url(./public/img/cloudy.jpg)'
+                            : result.weather[0].id === 800
+                            ? 'url(./public/img/clear_sky.webp)'
+                            : '',
+                }}>
                 <Content>
-                    <div className="input-wrapper">
-                        <Search
-                            bordered={false}
-                            placeholder="Search city"
-                            onSearch={onSearch}
-                            style={{width: 200}}
-                        />
-                    </div>
+                    <Form
+                        form={form}
+                        className="input-wrapper"
+                        onFinish={onSubmit}>
+                        <Form.Item name="search">
+                            <Search
+                                allowClear={true}
+                                bordered={false}
+                                placeholder="Search city"
+                                onSearch={onSearch}
+                                style={{width: 200}}
+                            />
+                        </Form.Item>
+                    </Form>
 
                     <DateLocation
                         name={result.name}
