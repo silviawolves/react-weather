@@ -1,6 +1,6 @@
 import 'antd/dist/antd.css';
 import './container.css';
-import '../../css/searchbar.css';
+import '../Searchbar/searchbar.css';
 
 import {useState, useEffect} from 'react';
 import {Input, Layout, Form} from 'antd';
@@ -98,13 +98,7 @@ function Container() {
                         className="input-wrapper"
                         onFinish={onSubmit}>
                         <Form.Item name="search">
-                            <Search
-                                allowClear={true}
-                                bordered={false}
-                                placeholder="Search city"
-                                onSearch={onSearch}
-                                style={{width: 200}}
-                            />
+                            <Search onSearch={onSearch} />
                         </Form.Item>
                     </Form>
 
