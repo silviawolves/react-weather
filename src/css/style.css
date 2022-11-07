@@ -38,7 +38,16 @@ body {
     border-bottom: 1px solid lightgray;
 }
 
-.ant-input-search-button > button {
+.ant-input-search > .ant-input-group > .ant-input-group-addon {
     border: none;
     background-color: transparent !important;
+}
+
+.ant-btn {
+    background-color: transparent !important;
+    border: none;
+}
+
+button {
+    color: white !important;
 }

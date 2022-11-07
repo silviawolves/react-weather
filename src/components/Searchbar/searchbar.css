@@ -12,13 +12,3 @@
 .ant-input-group-wrapper input:focus {
     box-shadow: 0 0 0 0;
 }
-
-button {
-    background-color: transparent !important;
-    color: white !important;
-}
-
-.ant-input-group-addon button {
-    border: none;
-    background-color: transparent !important;
-}
