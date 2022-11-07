@@ -86,7 +86,7 @@ function Container() {
                             ? 'url(./public/img/rain.jpg)'
                             : result.weather[0].id >= 600 &&
                               result.weather[0].id <= 622
-                            ? 'url(./public/img/snow.JPG)'
+                            ? 'url(./public/img/snow.jpg)'
                             : result.weather[0].id >= 701 &&
                               result.weather[0].id <= 781
                             ? 'url(./public/img/fog.jpeg)'
