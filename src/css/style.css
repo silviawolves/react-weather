@@ -8,11 +8,11 @@ body {
     place-items: center;
     min-width: 320px;
     min-height: 100vh;
-    background: rgb(93, 85, 76);
+    background: rgb(31, 31, 31);
     background: linear-gradient(
         328deg,
-        rgba(93, 85, 76, 1) 0%,
-        rgba(61, 58, 69, 1) 65%,
+        rgba(31, 31, 31, 1) 0%,
+        rgba(36, 38, 42, 1) 51%,
         rgba(0, 0, 0, 1) 100%
     );
 }
