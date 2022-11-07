@@ -78,18 +78,24 @@ function Container() {
                         result.weather[0].id >= 200 &&
                         result.weather[0].id <= 232
                             ? 'url(./public/img/storm.jpg)'
+                            : result.weather[0].id >= 300 &&
+                              result.weather[0].id <= 321
+                            ? 'url(./public/img/drizzle.JPG)'
                             : result.weather[0].id >= 500 &&
                               result.weather[0].id <= 531
                             ? 'url(./public/img/rain.jpg)'
                             : result.weather[0].id >= 600 &&
                               result.weather[0].id <= 622
-                            ? 'url(./public/img/snow.jpg)'
+                            ? 'url(./public/img/snow.JPG)'
+                            : result.weather[0].id >= 701 &&
+                              result.weather[0].id <= 781
+                            ? 'url(./public/img/fog.jpeg)'
                             : result.weather[0].id >= 801 &&
                               result.weather[0].id <= 804
                             ? 'url(./public/img/cloudy.jpg)'
                             : result.weather[0].id === 800
                             ? 'url(./public/img/clear.jpg)'
-                            : '',
+                            : 'black',
                 }}>
                 <Content>
                     <Form
