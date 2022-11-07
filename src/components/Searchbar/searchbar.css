@@ -1,26 +1,16 @@
-.input-wrapper {
-    display: flex;
-    justify-content: center;
-}
-
-.ant-input-group {
+.searchbar {
     border-bottom: 1px solid lightgray;
-    background-color: rgba(0, 0, 0, 0) !important;
 }
 
-.ant-input-group input {
+.searchbar {
     text-transform: capitalize;
     color: white;
-    background-color: transparent;
+    background-color: transparent !important;
     border: none;
 }
 
-.ant-input-group input:focus {
+.ant-input-group-wrapper input:focus {
     box-shadow: 0 0 0 0;
-}
-
-.ant-input-search > .ant-input-group > .ant-input-group-addon:last-child {
-    background-color: transparent !important;
 }
 
 button {
@@ -30,4 +20,5 @@ button {
 
 .ant-input-group-addon button {
     border: none;
+    background-color: transparent !important;
 }

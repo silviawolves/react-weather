@@ -1,6 +1,5 @@
 import 'antd/dist/antd.css';
 import './container.css';
-import '../Searchbar/searchbar.css';
 
 import {useState, useEffect} from 'react';
 import {Input, Layout, Form} from 'antd';

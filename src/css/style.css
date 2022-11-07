@@ -16,3 +16,29 @@ body {
         rgba(0, 0, 0, 1) 100%
     );
 }
+
+.input-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.ant-input {
+    background-color: transparent;
+    border: none;
+    text-transform: capitalize;
+    color: white;
+    border-bottom: 1px solid lightgray;
+}
+
+.ant-input-group-wrapper input:focus {
+    box-shadow: 0 0 0 0;
+}
+
+.ant-input-search .ant-input:hover {
+    border-bottom: 1px solid lightgray;
+}
+
+.ant-input-search-button > button {
+    border: none;
+    background-color: transparent !important;
+}

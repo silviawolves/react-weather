@@ -1,4 +1,7 @@
 import './searchbar.css';
+import {Input} from 'antd';
+
+const {Search} = Input;
 
 function Searchbar() {
     return (
@@ -6,8 +9,8 @@ function Searchbar() {
             allowClear={true}
             bordered={false}
             placeholder="Search city"
-            onSearch={onSearch}
-            style={{width: 200}}
+            onSearch={props.onSearch}
+            style={{width: 200, backgroundColor: 'transparent'}}
         />
     );
 }
