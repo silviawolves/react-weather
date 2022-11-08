@@ -1,4 +1,3 @@
-import 'antd/dist/antd.css';
 import './container.css';
 
 import {useState, useEffect} from 'react';
@@ -11,16 +10,44 @@ import DateLocation from '../DateLocation';
 import Weather from '../Weather';
 import Forecast from '../Forecast';
 
+import ClearUrl from '../../img/clear.jpg';
+import CloudyUrl from '../../img/cloudy.jpg';
+import DrizzleUrl from '../../img/drizzle.jpg';
+import FogUrl from '../../img/fog.jpeg';
+import RainUrl from '../../img/rain.jpg';
+import SnowUrl from '../../img/snow.jpg';
+import StormUrl from '../../img/storm.jpg';
+
 const {Content} = Layout;
 const {Search} = Input;
 
-function Container() {
+const Container = () => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [city, setCity] = useState('Venezia');
     const [result, setResult] = useState({});
-
     const [form] = Form.useForm();
+
+    const mapImage = (id) => {
+        switch (true) {
+            case id >= 200 && id <= 232:
+                return `url(${StormUrl})`;
+            case id >= 300 && id <= 321:
+                return `url(${DrizzleUrl})`;
+            case id >= 500 && id <= 531:
+                return `url(${RainUrl})`;
+            case id >= 600 && id <= 622:
+                return `url(${SnowUrl})`;
+            case id >= 701 && id <= 781:
+                return `url(${FogUrl})`;
+            case id >= 801 && id <= 804:
+                return `url(${CloudyUrl})`;
+            case id === 800:
+                return `url(${ClearUrl})`;
+            default:
+                return `url(${FogUrl})`;
+        }
+    };
 
     const onSearch = (value) => {
         setCity(value);
@@ -74,28 +101,7 @@ function Container() {
                 style={{
                     backgroundPosition: 'center',
                     backgroundSize: 'cover',
-                    backgroundImage:
-                        result.weather[0].id >= 200 &&
-                        result.weather[0].id <= 232
-                            ? 'url(./public/img/storm.jpg)'
-                            : result.weather[0].id >= 300 &&
-                              result.weather[0].id <= 321
-                            ? 'url(./public/img/drizzle.JPG)'
-                            : result.weather[0].id >= 500 &&
-                              result.weather[0].id <= 531
-                            ? 'url(./public/img/rain.jpg)'
-                            : result.weather[0].id >= 600 &&
-                              result.weather[0].id <= 622
-                            ? 'url(./public/img/snow.jpg)'
-                            : result.weather[0].id >= 701 &&
-                              result.weather[0].id <= 781
-                            ? 'url(./public/img/fog.jpeg)'
-                            : result.weather[0].id >= 801 &&
-                              result.weather[0].id <= 804
-                            ? 'url(./public/img/cloudy.jpg)'
-                            : result.weather[0].id === 800
-                            ? 'url(./public/img/clear.jpg)'
-                            : 'black',
+                    backgroundImage: mapImage(result.weather[0].id),
                 }}>
                 <Content>
                     <Form
@@ -119,6 +125,6 @@ function Container() {
             </div>
         );
     }
-}
+};
 
 export default Container;

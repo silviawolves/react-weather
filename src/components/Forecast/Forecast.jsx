@@ -5,7 +5,7 @@ import './forecast.css';
 
 const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
-function Forecast(props) {
+const Forecast = (props) => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [forecast, setForecast] = useState({});
@@ -66,6 +66,6 @@ function Forecast(props) {
             </div>
         );
     }
-}
+};
 
 export default Forecast;

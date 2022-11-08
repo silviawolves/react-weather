@@ -3,7 +3,7 @@ import {Input} from 'antd';
 
 const {Search} = Input;
 
-function Searchbar() {
+const Searchbar = () => {
     return (
         <Search
             allowClear={true}
@@ -13,6 +13,6 @@ function Searchbar() {
             style={{width: 200, backgroundColor: 'transparent'}}
         />
     );
-}
+};
 
 export default Searchbar;

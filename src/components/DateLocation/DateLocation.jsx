@@ -1,6 +1,6 @@
 import './datelocation.css';
 
-function DateLocation(props) {
+const DateLocation = (props) => {
     return (
         <div className="dl-wrapper">
             <h1 style={{textTransform: 'capitalize'}}>
@@ -10,6 +10,6 @@ function DateLocation(props) {
             <p className="date-time">{props.date}</p>
         </div>
     );
-}
+};
 
 export default DateLocation;

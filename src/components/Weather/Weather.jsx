@@ -2,7 +2,7 @@ import {Row, Col, Divider} from 'antd';
 import {ArrowUpOutlined, ArrowDownOutlined} from '@ant-design/icons';
 import './weather.css';
 
-function Weather(props) {
+const Weather = (props) => {
     return (
         <div className="weather-wrapper">
             <Row gutter={20} style={{textAlign: 'center'}}>
@@ -46,6 +46,6 @@ function Weather(props) {
             </Row>
         </div>
     );
-}
+};
 
 export default Weather;
