@@ -1,6 +1,7 @@
 import './container.css';
 
 import {useState, useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {Input, Layout, Form} from 'antd';
 import {LoadingOutlined} from '@ant-design/icons';
 import {API_KEY} from '../../api';
@@ -26,6 +27,7 @@ const Container = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [city, setCity] = useState('Venezia');
     const [result, setResult] = useState({});
+
     const [form] = Form.useForm();
 
     const mapImage = (id) => {
