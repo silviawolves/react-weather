@@ -1,19 +1,31 @@
-import {Divider, Row, Col} from 'antd';
 import {useState, useEffect} from 'react';
+import {Divider, Row, Col} from 'antd';
+import dayjs from 'dayjs';
 import {API_KEY} from '../../api';
 import './forecast.css';
-
-const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
 const Forecast = (props) => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [forecast, setForecast] = useState({});
 
-    const dayInWeek = new Date().getDay();
-    const forecastDays = weekDays
-        .slice(dayInWeek, weekDays.length)
-        .concat(weekDays.slice(0, dayInWeek));
+    const formatDays = () => {
+        return forecast.list
+            .map((data) => {
+                return {
+                    days: dayjs(data.dt * 1000)
+                        .add(1, 'day')
+                        .format('ddd'),
+                    dayIcon: data.weather[0].icon,
+                    dayTemp: data.main.temp,
+                };
+            })
+            .filter(
+                (value, i, self) =>
+                    i === self.findIndex((day) => day.days === value.days),
+            )
+            .slice(0, 6);
+    };
 
     useEffect(() => {
         fetch(
@@ -47,21 +59,23 @@ const Forecast = (props) => {
                 </Divider>
 
                 <Row align="middle" justify="space-between">
-                    {forecast.list.splice(0, 5).map((day, i) => (
-                        <Col key={i}>
-                            <div className="daily-wrapper">
-                                <h4 style={{color: 'white', margin: 0}}>
-                                    {forecastDays[i]}
-                                </h4>
-                                <img
-                                    src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
-                                    alt=""
-                                    style={{height: '30px'}}
-                                />
-                                <p>{Math.round(day.main.temp)}° C</p>
-                            </div>
-                        </Col>
-                    ))}
+                    {formatDays(forecast)
+                        .splice(0, 5)
+                        .map((data, i) => (
+                            <Col key={i}>
+                                <div className="daily-wrapper">
+                                    <h4 style={{color: 'white', margin: 0}}>
+                                        {data.days}
+                                    </h4>
+                                    <img
+                                        src={`http://openweathermap.org/img/wn/${data.dayIcon}.png`}
+                                        alt=""
+                                        style={{height: '30px'}}
+                                    />
+                                    <p>{Math.round(data.dayTemp)}° C</p>
+                                </div>
+                            </Col>
+                        ))}
                 </Row>
             </div>
         );
